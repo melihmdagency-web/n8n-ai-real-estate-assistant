@@ -13,7 +13,7 @@ A chat assistant that answers property questions from n8n Data Tables (easily sw
 ```mermaid
 flowchart LR
   U[Chat Trigger] --> A[AI Agent]
-  M[Groq llama-3.3-70b] -.-> A
+  M[Groq gpt-oss-120b] -.-> A
   W[Window Buffer Memory] -.-> A
   A -.-> T1[Search Listings\nData Table]
   A -.-> T2[Save Lead\nData Table]

@@ -18,7 +18,7 @@ Toplam süre: ~20 dk. n8n: http://localhost:5678
 1. https://console.groq.com/keys → **Create API Key** → kopyala. (Dosyaya yazma, sadece n8n'e yapıştır.)
 2. Workflow'da **Groq Chat Model** node'una çift tıkla → Credential kutusu → **Create new credential**.
 3. API Key alanına anahtarı yapıştır → **Save**. Yeşil "Connection tested successfully" çıkmalı.
-4. Model: `llama-3.3-70b-versatile` (ücretsiz katman). Hata verirse listeden güncel bir llama modeli seç.
+4. Model: `openai/gpt-oss-120b`. Hata verirse listeden güncel bir model seç.
 
 ## 4. Google Sheets bağlantısı (localhost OAuth)
 Bir kerelik Google Cloud ayarı:
