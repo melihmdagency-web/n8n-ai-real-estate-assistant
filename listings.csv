@@ -1,4 +1,4 @@
-ID,City,Address,Type,Rooms,SizeSqm,Price,Intent,Highlight
+listing_id,city,address,type,rooms,size_sqm,price,intent,highlight
 L001,Leipzig,Musterstraße 12,Apartment,2,54,950,rent,Balcony and renovated kitchen
 L002,Leipzig,Beispielweg 3,Apartment,3,78,1250,rent,Near park and tram stop
 L003,Leipzig,Probeallee 7,Apartment,1,32,640,rent,Furnished studio close to university

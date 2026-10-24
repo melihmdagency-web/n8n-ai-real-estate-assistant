@@ -44,76 +44,84 @@
       "parameters": {
         "descriptionType": "manual",
         "toolDescription": "Search available property listings. Always call this before recommending anything. Returns all rows for the given city; filter by rooms and price yourself.",
-        "documentId": { "__rl": true, "value": "PASTE_YOUR_SHEET_HERE", "mode": "id" },
-        "sheetName": { "__rl": true, "value": "Listings", "mode": "name" },
-        "filtersUI": {
-          "values": [
-            { "lookupColumn": "City", "lookupValue": "={{ $fromAI('City', 'City to search, e.g. Leipzig', 'string') }}" }
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": { "__rl": true, "mode": "name", "value": "Listings" },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            { "keyName": "city", "condition": "eq", "keyValue": "={{ $fromAI('City', 'City to search, e.g. Leipzig', 'string') }}" }
           ]
         },
-        "options": {}
+        "returnAll": true
       },
-      "type": "n8n-nodes-base.googleSheetsTool",
-      "typeVersion": 4.7,
+      "type": "n8n-nodes-base.dataTableTool",
+      "typeVersion": 1.1,
       "position": [420, 260],
       "id": "a1000000-0000-4000-8000-000000000005",
-      "name": "Search Listings",
-      "credentials": { "googleSheetsOAuth2Api": { "id": "", "name": "Google Sheets account" } }
+      "name": "Search Listings"
     },
     {
       "parameters": {
         "descriptionType": "manual",
-        "toolDescription": "Save or update a lead (matched by Email). Call once you know name, email, budget, timing, financing and buy/rent.",
-        "operation": "appendOrUpdate",
-        "documentId": { "__rl": true, "value": "PASTE_YOUR_SHEET_HERE", "mode": "id" },
-        "sheetName": { "__rl": true, "value": "Leads", "mode": "name" },
+        "toolDescription": "Save or update a lead (matched by email). Call once you know name, email, budget, timing, financing and buy/rent.",
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": { "__rl": true, "mode": "name", "value": "Leads" },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            { "keyName": "email", "condition": "eq", "keyValue": "={{ $fromAI('email', 'Lead email', 'string') }}" }
+          ]
+        },
         "columns": {
           "mappingMode": "defineBelow",
-          "matchingColumns": ["Email"],
+          "matchingColumns": [],
           "value": {
-            "Name": "={{ $fromAI('Name', 'Lead full name', 'string') }}",
-            "Email": "={{ $fromAI('Email', 'Lead email', 'string') }}",
-            "Budget": "={{ $fromAI('Budget', 'Budget in EUR, number only', 'number') }}",
-            "Timeline": "={{ $fromAI('Timeline', 'When they want to move, e.g. within 3 months', 'string') }}",
-            "Financing": "={{ $fromAI('Financing', 'cash / pre-approved / not yet / n/a for rent', 'string') }}",
-            "Intent": "={{ $fromAI('Intent', 'buy or rent', 'string') }}",
-            "Score": "={{ $fromAI('Score', 'Lead score 0-100 integer', 'number') }}"
+            "name": "={{ $fromAI('name', 'Lead full name', 'string') }}",
+            "email": "={{ $fromAI('email', 'Lead email', 'string') }}",
+            "budget": "={{ $fromAI('budget', 'Budget in EUR, number only', 'number') }}",
+            "timeline": "={{ $fromAI('timeline', 'When they want to move, e.g. within 3 months', 'string') }}",
+            "financing": "={{ $fromAI('financing', 'cash / pre-approved / not yet / n/a for rent', 'string') }}",
+            "intent": "={{ $fromAI('intent', 'buy or rent', 'string') }}",
+            "score": "={{ $fromAI('score', 'Lead score 0-100 integer', 'number') }}"
           },
           "schema": []
-        },
-        "options": { "cellFormat": "RAW" }
+        }
       },
-      "type": "n8n-nodes-base.googleSheetsTool",
-      "typeVersion": 4.7,
+      "type": "n8n-nodes-base.dataTableTool",
+      "typeVersion": 1.1,
       "position": [600, 260],
       "id": "a1000000-0000-4000-8000-000000000006",
-      "name": "Save Lead",
-      "credentials": { "googleSheetsOAuth2Api": { "id": "", "name": "Google Sheets account" } }
+      "name": "Save Lead"
     },
     {
       "parameters": {
         "descriptionType": "manual",
-        "toolDescription": "Write the viewing slot the lead chose into their Leads row (matched by Email). Only for leads with score >= 60. ViewingSlot must be exactly one of the slots returned by Suggest Viewing Slots.",
-        "operation": "appendOrUpdate",
-        "documentId": { "__rl": true, "value": "PASTE_YOUR_SHEET_HERE", "mode": "id" },
-        "sheetName": { "__rl": true, "value": "Leads", "mode": "name" },
+        "toolDescription": "Write the viewing slot the lead chose into their Leads row (matched by email). Only for leads with score >= 60. viewing_slot must be exactly one of the slots returned by Suggest Viewing Slots.",
+        "resource": "row",
+        "operation": "update",
+        "dataTableId": { "__rl": true, "mode": "name", "value": "Leads" },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            { "keyName": "email", "condition": "eq", "keyValue": "={{ $fromAI('email', 'Lead email', 'string') }}" }
+          ]
+        },
         "columns": {
           "mappingMode": "defineBelow",
-          "matchingColumns": ["Email"],
+          "matchingColumns": [],
           "value": {
-            "Email": "={{ $fromAI('Email', 'Lead email', 'string') }}",
-            "ViewingSlot": "={{ $fromAI('ViewingSlot', 'The chosen viewing slot exactly as offered', 'string') }}"
+            "viewing_slot": "={{ $fromAI('viewing_slot', 'The chosen viewing slot exactly as offered', 'string') }}"
           },
           "schema": []
-        },
-        "options": { "cellFormat": "RAW" }
+        }
       },
-      "type": "n8n-nodes-base.googleSheetsTool",
-      "typeVersion": 4.7,
+      "type": "n8n-nodes-base.dataTableTool",
+      "typeVersion": 1.1,
       "position": [780, 260],
       "id": "a1000000-0000-4000-8000-000000000007",
-      "name": "Confirm Viewing",
-      "credentials": { "googleSheetsOAuth2Api": { "id": "", "name": "Google Sheets account" } }
+      "name": "Confirm Viewing"
     },
     {
       "parameters": {
