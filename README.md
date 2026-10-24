@@ -32,6 +32,10 @@ n8n 2.x · AI Agent node · Groq Chat Model · Window Buffer Memory · Google Sh
 
 Detailed (Turkish) steps: [KURULUM.md](KURULUM.md). All data is fictional.
 
+## Security notes (demo scope)
+- Sheet writes use RAW cell format, so user text is never evaluated as a formula.
+- Leads are upserted by email and the score ≥ 60 gate is enforced by the agent prompt. Fine for a demo; for production, verify the email (one-time code) and move the score check into a Code node.
+
 ## Screenshots
 - `docs/canvas.png` – workflow canvas
 - `docs/chat.png` – chat with listing results

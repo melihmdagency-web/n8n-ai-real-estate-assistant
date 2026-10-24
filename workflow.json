@@ -81,7 +81,7 @@
           },
           "schema": []
         },
-        "options": {}
+        "options": { "cellFormat": "RAW" }
       },
       "type": "n8n-nodes-base.googleSheetsTool",
       "typeVersion": 4.7,
@@ -93,7 +93,7 @@
     {
       "parameters": {
         "descriptionType": "manual",
-        "toolDescription": "Write the viewing slot the lead chose into their Leads row (matched by Email). Only for leads with score >= 60.",
+        "toolDescription": "Write the viewing slot the lead chose into their Leads row (matched by Email). Only for leads with score >= 60. ViewingSlot must be exactly one of the slots returned by Suggest Viewing Slots.",
         "operation": "appendOrUpdate",
         "documentId": { "__rl": true, "value": "PASTE_YOUR_SHEET_HERE", "mode": "id" },
         "sheetName": { "__rl": true, "value": "Leads", "mode": "name" },
@@ -106,7 +106,7 @@
           },
           "schema": []
         },
-        "options": {}
+        "options": { "cellFormat": "RAW" }
       },
       "type": "n8n-nodes-base.googleSheetsTool",
       "typeVersion": 4.7,
