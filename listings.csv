@@ -1,0 +1,13 @@
+ID,City,Address,Type,Rooms,SizeSqm,Price,Intent,Highlight
+L001,Leipzig,Musterstraße 12,Apartment,2,54,950,rent,Balcony and renovated kitchen
+L002,Leipzig,Beispielweg 3,Apartment,3,78,1250,rent,Near park and tram stop
+L003,Leipzig,Probeallee 7,Apartment,1,32,640,rent,Furnished studio close to university
+L004,Leipzig,Testgasse 21,Apartment,4,105,1890,rent,Family flat with two bathrooms
+L005,Leipzig,Musterstraße 45,Apartment,2,60,215000,buy,Quiet courtyard and new windows
+L006,Leipzig,Demoring 9,Apartment,3,85,289000,buy,Top floor with elevator
+L007,Leipzig,Beispielweg 18,House,5,140,465000,buy,Small garden and garage
+L008,Leipzig,Probeallee 30,Apartment,1,38,129000,buy,Good investment near city center
+L009,Leipzig,Testgasse 5,Apartment,3,72,1100,rent,Pets allowed
+L010,Leipzig,Demoring 22,Apartment,2,58,189000,buy,Recently renovated bathroom
+L011,Leipzig,Musterstraße 88,House,4,120,2400,rent,Terrace and garden
+L012,Leipzig,Probeallee 14,Apartment,4,98,349000,buy,Altbau with high ceilings
